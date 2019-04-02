@@ -1,0 +1,6 @@
+import management
+
+my_cards=[]
+my_deck=Deck(0,my_cards,'Waste')
+
+my_deck.add_card_to_deck(
