@@ -25,22 +25,38 @@ class deck:
 		self.cards = cards
 		
 
-		
+	
+	
+	
 def add_card_to_deck(card,deck):
 	deck.cards.append(card)
 	deck.number += 1
 	return 
 
-def edit_topside(deck, identifer, new_topside):
+
+
+def edit_topside(deck, identity, new_topside):
 	for card in deck.cards:
-		if card.identifer==identifer:
+		if card.identifer==identity:
 			card.topside= new_topside
 	return
+
+
+
+
+def edit_backside(deck, identity, new_backside):
+	for card in deck.cards:
+		if card.identifer==identity:
+			card.backside= new_backside
+	return
+
+
 
 def delete_card_from_deck(obsolete_card, deck):
 	deck.cards.pop(obsolete_card.position)
 	deck.number -=1
 	return
+
 
 
 def save_the_deck(deck):
