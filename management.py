@@ -31,7 +31,8 @@ class Deck:
 	"""
 	this program creates a new card (attributes are the inputs) and add it to the current deck
 	"""
-		new_card = Card(id_card, subject, top_side, back_side)
+		position=self.number
+		new_card = Card(id_card, subject, top_side, back_side,position)
 		self.cards.append(new_card)
 		self.number += 1
 		return 
