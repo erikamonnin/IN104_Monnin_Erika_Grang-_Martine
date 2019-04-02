@@ -60,6 +60,7 @@ def delete_card_from_deck(obsolete_card, deck):
 
 
 def save_the_deck(deck, filename):
+	#filename est une chaine de caractère entre '' !!!
 	with_open(filename,_'wb')_as_f:
 		pickle.dump(deck,_f)
 		
