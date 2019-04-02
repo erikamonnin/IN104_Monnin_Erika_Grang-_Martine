@@ -22,7 +22,11 @@ class deck:
 		self.number = number
 		self.cards = cards
 		
-		
+
+def add_card_to_deck(card,deck):
+	deck.cards.append(card)
+	deck.number += 1
+	return 
 	
 def delete_card(self, obsolete_card):
 	self.cards.pop(obsolete_card)
