@@ -26,5 +26,5 @@ class deck:
 		
 	
 def delete_card(self, new_card):
-	self.cards.append(card)
+	self.cards.append(new_card)
 
