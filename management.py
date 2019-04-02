@@ -1,6 +1,6 @@
 import pickle
 
-class cards:
+class Card:
 
 	def __init__(self, identifer, subject, topside, backside, position):
 		self.identifer=identifer
