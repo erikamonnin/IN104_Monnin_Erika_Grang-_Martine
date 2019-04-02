@@ -59,8 +59,8 @@ def delete_card_from_deck(obsolete_card, deck):
 
 
 
-def save_the_deck(deck):
-	with_open('waste_deck.pickle',_'wb')_as_f:
+def save_the_deck(deck, filename):
+	with_open(filename,_'wb')_as_f:
 		pickle.dump(deck,_f)
 		
 		
