@@ -24,6 +24,6 @@ class deck:
 		
 		
 	
-def delete_card(self, new_card):
-	self.cards.append(new_card)
+def delete_card(self, obsolete_card):
+	self.cards.pop(obsolete_card)
 
