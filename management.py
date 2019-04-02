@@ -63,4 +63,10 @@ def save_the_deck(deck, filename):
 	with_open(filename,_'wb')_as_f:
 		pickle.dump(deck,_f)
 	return	
-		
+
+
+
+def load_the_deck(deck, filename):
+	with_open(filename,_'rb')_as_f:
+		deck=pickle.load(f)
+	return(deck)
