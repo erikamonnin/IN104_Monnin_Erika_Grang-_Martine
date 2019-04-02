@@ -15,7 +15,7 @@ class Card:
 		print("Now you can choose between : glass bin, compost, recyclable, bouchons, electronics, piles, ampoules, waste")
 
 
-class deck:
+class Deck:
 	def __init__(self,number,cards):
 	"""
 	number = the number of cards in the deck
