@@ -3,12 +3,12 @@ import pickle
 class cards:
 
 	def __init__(self, identifer, subject, topside, backside, position):
-		self.identifer=identifer
+		self.identifer=identifer   #string du type card_dechet
 		self.subject=subject
 		self.topside=topside
 		self.backside=backside
 		self.position=position
-		self.review=True  #when the card is created, it needs to view a first time
+		self.review=True  #when the card is created, it needs to be viewed a first time
 
 		self.date=0
 
