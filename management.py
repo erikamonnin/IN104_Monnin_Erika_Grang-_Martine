@@ -58,15 +58,15 @@ class Deck:
 
 
 
-def save_the_deck(deck, filename):
-	#filename est une chaine de caractère entre 'filename' !!!
-	with_open(filename, 'wb') as f:
-		pickle.dump(deck, f)
-	return	
+	def save_the_deck(self, filename):
+		#filename est une chaine de caractère entre 'filename' !!!
+		with_open(filename, 'wb') as f:
+			pickle.dump(self, f)
+		return	
 
 
 
-def load_the_deck(deck, filename):
-	with_open(filename, 'rb') as f:
-		deck=pickle.load(f)
-	return(deck)
+	def load_the_deck(self, filename):
+		with_open(filename, 'rb') as f:
+			self=pickle.load(f)
+		return(self)
