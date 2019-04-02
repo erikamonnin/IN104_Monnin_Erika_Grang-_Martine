@@ -1,3 +1,5 @@
+import pickle
+
 class cards:
 
 	def __init__(self, identifer, subject, topside, backside, position):
@@ -32,7 +34,11 @@ def add_card_to_deck(card,deck):
 
 
 def delete_card_from_deck(obsolete_card, deck):
-	deck.cards.pop(obsolete_card)
+	deck.cards.pop(obsolete_card.position)
 	deck.number -=1
 	return
 
+
+def save_the_deck(deck):
+	with_open('',_'wb')_as_f:
+		pickle.dump(deck,_f)
