@@ -28,6 +28,8 @@ def add_card_to_deck(card,deck):
 	deck.number += 1
 	return 
 	
-def delete_card(self, obsolete_card):
-	self.cards.pop(obsolete_card)
+def delete_card(deck, obsolete_card):
+	deck.cards.pop(obsolete_card)
+	deck.number -=1
+	return
 
