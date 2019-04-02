@@ -1,6 +1,6 @@
 import pickle
 
-class Card:
+class cards:
 
 	def __init__(self, identifer, subject, topside, backside, position):
 		self.identifer=identifer
@@ -15,7 +15,7 @@ class Card:
 		print("Now you can choose between : glass bin, compost, recyclable, bouchons, electronics, piles, ampoules, waste")
 
 
-class Deck:
+class deck:
 	def __init__(self,number,cards):
 	"""
 	number = the number of cards in the deck
@@ -31,7 +31,11 @@ def add_card_to_deck(card,deck):
 	deck.number += 1
 	return 
 
-
+def edit_topside(deck, identifer, new_topside):
+	for card in deck.cards:
+		if card.identifer==identifer:
+			card.topside= new_topside
+	return
 
 def delete_card_from_deck(obsolete_card, deck):
 	deck.cards.pop(obsolete_card.position)
@@ -42,3 +46,5 @@ def delete_card_from_deck(obsolete_card, deck):
 def save_the_deck(deck):
 	with_open('',_'wb')_as_f:
 		pickle.dump(deck,_f)
+		
+		
