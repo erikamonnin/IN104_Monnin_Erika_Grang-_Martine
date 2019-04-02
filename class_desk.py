@@ -7,3 +7,7 @@ class deck:
 		self.number = number
 		self.cards = cards
 		
+	
+	def delete_card(self, new_card):
+		self.cards.append(card)
+		return(self)
