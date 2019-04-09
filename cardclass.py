@@ -1,13 +1,14 @@
+import datetime
+
 class Card:
 
-	def __init__(self, identifer, subject, topside, backside, position):
-		self.identifer=identifer
+	def __init__(self, identifier, subject="Waste", topside, backside):
+		self.identifier=identifier
 		self.subject=subject
 		self.topside=topside
 		self.backside=backside
-		self.position=position
+		self.position=0
 		self.review=True  #when the card is created, it needs to view a first time
 
-		self.date=0
+		self.date=datetime.datetime.now()
 
-		print("Now you can choose between : glass bin, compost, recyclable, bouchons, electronics, piles, ampoules, waste")

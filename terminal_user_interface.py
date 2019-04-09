@@ -1,20 +1,30 @@
 from cardclass import Card
 from class_desk import Deck
 
-my_cards=[]
-my_deck=Deck(0,my_cards,'Waste')
-
+my_deck=Deck()
 flag=True 
 
-while flag==True:
-	choice=raw_input('What do you want to do?\n A - add card \n E - edit a card \n D - Delete a card \n S - save the deck \n L - load a deck\n Q - quit \n')
+
+
+choix=upper(raw_input('Do you want to load a deck or not ?\n Y or N'))
+if choix == 'Y':
+	filename=raw_input('Nom du fichier\n') + '.pickle'
+	my_deck.load_the_deck(filename)
+
+
+
+
+while flag:
+
+	choice=upper(raw_input('What do you want to do?\n A - add card \n E - edit a card \n D - Delete a card \n S - save the deck \n L - load a deck\n Q - quit \n'))
   
 	if choice == 'A': 
 		id_card=raw_input('Id card?\n')
-		subject=raw_input('Subject?\n')
 		topside=raw_input('Top Side?\n')
 		backside=raw_input('Back Side?\n')
-		my_deck.add_card_to_deck(id_card,subject,topside,backside)
+		my_deck.add_card_to_deck(id_card,topside,backside)
+		msg = "You have " + str(len(my_deck.cards)) + " cards"
+		print msg
 		print("the card as been succesfully added!")
 		
 	if choice == 'E': 
@@ -29,11 +39,11 @@ while flag==True:
 		my_deck.delete_card_from_deck(id_card)
 	
 	if choice == 'L':
-		filename=raw_input('Nom du fichier (chaîne de caractères entre simples guillemets)\n')
+		filename=raw_input('Nom du fichier\n') + '.pickle'
 		my_deck.load_the_deck(filename)
 
 	if choice == 'S':
-		filename=raw_input('Nom du fichier (chaîne de caractères entre simples guillemets)\n')
+		filename=raw_input('Nom du fichier\n') + '.pickle'
 		my_deck.save_the_deck(filename)
 		
 	if choice == 'Q':

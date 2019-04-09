@@ -2,13 +2,11 @@ import pickle
 from cardclass import Card
 
 class Deck:
-	def __init__(self,number,cards,subject):
+	def __init__(self,subject="Waste"):
 		"""
-		number = the number of cards in the deck
 		cards = a list containing all the cards added
 		"""
-		self.number = number
-		self.cards = cards
+		self.cards = []
 		self.subject = subject
 	
 
@@ -16,20 +14,19 @@ class Deck:
 		"""
 		this program creates a new card (attributes are the inputs) and add it to the current deck
 		"""
-		position=self.number
-		new_card = Card(id_card, subject, top_side, back_side,position)
+		new_card = Card(id_card, subject, top_side, back_side)
 		self.cards.append(new_card)
-		self.number += 1
 		return 
 	
 	def delete_card_from_deck(self,obsolete_id_card):
 		"""
 		this program deletes a card (thanks to its id) from the current deck
 		"""
+		i=0
 		for x in self.cards:
 			if x.identifier==obsolete_id_card:
-				self.cards.pop(x.position)
-				self.number -=1
+				self.cards.pop(i)
+			i+=1
 		return
 	
 
@@ -49,12 +46,13 @@ class Deck:
 		filename est une chaine de caracteres entre simples guillemets !!!
 		"""
 		with open(filename, 'wb') as f:
-			pickle.dump(self, f)
+			pickle.dump(self.cards, f)
 		return	
 
 
 
 	def load_the_deck(self, filename):
 		with open(filename, 'rb') as f:
-			self=pickle.load(f)
+			self.cards=pickle.load(f)
 		return(self)
+

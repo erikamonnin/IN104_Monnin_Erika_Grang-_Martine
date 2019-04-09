@@ -1,4 +1,6 @@
 import unittest
+from cardclass import Card
+
 
 
 class TestManagement(unittest.TestCase):
