@@ -27,11 +27,11 @@ if choice == 'D':
 	my_deck.delete_card_from_deck(id_card)
 	
 if choice == 'L':
-	filename=raw_input('Nom du fichier\n')
+	filename=raw_input('Nom du fichier (chaîne de caractères entre simples guillemets)\n')
 	my_deck.load_the_deck(filename)
 
 if choice == 'S':
-	filename=raw_input('Nom du fichier\n')
+	filename=raw_input('Nom du fichier (chaîne de caractères entre simples guillemets)\n')
 	my_deck.save_the_deck(filename)
 
 if choice == 'Q':
