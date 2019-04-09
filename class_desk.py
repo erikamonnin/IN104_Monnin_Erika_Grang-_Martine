@@ -1,4 +1,5 @@
 import pickle
+from cardclass import Card
 
 class Deck:
 	def __init__(self,number,cards,subject):
