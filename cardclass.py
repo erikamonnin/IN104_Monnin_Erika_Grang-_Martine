@@ -1,7 +1,7 @@
 class Card:
 
-	def __init__(self, identifer, subject, topside, backside, position):
-		self.identifer=identifer
+	def __init__(self, identifier, subject, topside, backside, position):
+		self.identifier=identifier
 		self.subject=subject
 		self.topside=topside
 		self.backside=backside
