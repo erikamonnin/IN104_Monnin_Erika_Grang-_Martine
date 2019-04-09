@@ -1,4 +1,4 @@
-class deck:
+class Deck:
 	def __init__(self,number,cards):
 	"""
 	number = the number of cards in the deck
