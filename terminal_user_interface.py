@@ -15,6 +15,12 @@ if choice == 'A':
 	my_deck.add_card_to_deck(id_card,subject,topside,backside)
 	print("the card as been succesfully added!")
 		
+if choice == 'E': 
+	id_card=raw_input('Id card?\n')
+	attribute=raw_input('Edited attribute?\n')
+	change=raw_input('Change?\n')
+	my_deck.edit_card(id_card,attribute,change)
+	print("the card as been succesfully edited!")
 		
 if choice == 'D':
 	id_card=raw_input('Id_card\n')
@@ -29,5 +35,6 @@ if choice == 'S':
 	my_deck.save_the_deck(filename)
 
 if choice == 'Q':
-	loop_flag=False
+	quit()
+    
     
