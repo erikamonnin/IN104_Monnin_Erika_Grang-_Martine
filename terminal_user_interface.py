@@ -38,12 +38,15 @@ while flag:
 		id_card=raw_input('Id_card\n')
 		my_deck.delete_card_from_deck(id_card)
 	
+
 	if choice == 'L':
 		filename=raw_input('Nom du fichier\n') + '.pickle'
 		my_deck.load_the_deck(filename)
 
+
 	if choice == 'S':
 		filename=raw_input('Nom du fichier\n') + '.pickle'
+
 		my_deck.save_the_deck(filename)
 		
 	if choice == 'Q':
