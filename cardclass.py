@@ -2,7 +2,7 @@ import datetime
 
 class Card:
 
-	def __init__(self, identifier, subject="Waste", topside, backside):
+	def __init__(self, identifier, subject, topside, backside):
 
 		self.identifier=identifier
 		self.subject=subject
