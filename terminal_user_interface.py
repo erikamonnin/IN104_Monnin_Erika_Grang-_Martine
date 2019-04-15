@@ -6,7 +6,8 @@ flag=True
 
 
 
-choix=upper(raw_input('Do you want to load a deck or not ?\n Y or N'))
+choix=raw_input('Do you want to load a deck or not ?\n Y or N')
+choix=choix.upper()
 if choix == 'Y':
 	filename=raw_input('Nom du fichier\n') + '.pickle'
 	my_deck.load_the_deck(filename)
@@ -16,17 +17,19 @@ if choix == 'Y':
 
 while flag:
 
-	choice=upper(raw_input('What do you want to do?\n A - add card \n E - edit a card \n D - Delete a card \n S - save the deck \n L - load a deck\n Q - quit \n'))
+	choice=raw_input('What do you want to do?\n A - add card \n E - edit a card \n D - Delete a card \n S - save the deck \n L - load a deck\n Q - quit \n')
+	choice=choice.upper()
   
 	if choice == 'A': 
 		id_card=raw_input('Id card?\n')
 		topside=raw_input('Top Side?\n')
 		backside=raw_input('Back Side?\n')
-		my_deck.add_card_to_deck(id_card,topside,backside)
+		my_deck.add_card_to_deck(id_card,"Waste",topside,backside)
 		msg = "You have " + str(len(my_deck.cards)) + " cards"
 		print msg
 		print("the card as been succesfully added!")
 		
+
 	if choice == 'E': 
 		id_card=raw_input('Id card?\n')
 		attribute=raw_input('Edited attribute?\n')
@@ -34,6 +37,7 @@ while flag:
 		my_deck.edit_card(id_card,attribute,change)
 		print("the card as been succesfully edited!")
 		
+
 	if choice == 'D':
 		id_card=raw_input('Id_card\n')
 		my_deck.delete_card_from_deck(id_card)
@@ -46,10 +50,20 @@ while flag:
 
 	if choice == 'S':
 		filename=raw_input('Nom du fichier\n') + '.pickle'
-
 		my_deck.save_the_deck(filename)
 		
+
 	if choice == 'Q':
 		flag=False
-    
+
+
+
+choix=raw_input('Have you saved the deck ? Y or N \n')
+choix=choix.upper()
+if choix== 'N':
+	filename=raw_input('Nom du fichier\n') + '.pickle'
+	my_deck.save_the_deck(filename)
+
+
+
     
