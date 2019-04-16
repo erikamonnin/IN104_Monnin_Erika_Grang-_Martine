@@ -9,9 +9,28 @@
 ########################################
 
 
+######  USE OF DATETIME   ######
+# D= datetime.datetime.now() alors D= AAAA-MM-DD HH:MM:SS.SSSSSS
+# D.day= DD     D.hour=HH   etc...
+################################
+
+
+
+
+
+
+
+
+
+
 from cardclass import Card
 from class_desk import Deck
+from list_to_be_reviewed import to_be_reviewed
 import datetime
+import random
+
+
+
 
 
 #######     CHARGEMENT DU PAQUET A REVISER     ########
@@ -23,36 +42,15 @@ my_deck.load_the_deck(filename)
 
 
 
-
-######  USE OF DATETIME   ######
-# D= datetime.datetime.now() alors D= AAAA-MM-DD HH:MM:SS.SSSSSS
-# D.day= DD     D.hour=HH   etc...
-################################
-
-
-
-
-
 ######   CREATION DE LA LISTE DES CARTES A REVISER   ######
 
 today=datetime.datetime.now()
-for card in my_deck.cards:
-	if not card.review:
-		due_date=fonction_Erika()
-		if today.year>due_date.year:
-			card.review=True
-		elif today.year=due_date.year and today.month>due_date.month:
-			card.review=True
-		elif today.year=due_date.year and today.month=due_date.month and today.day>=due_date.day:
-			card.review=True
-
-
-
+a_revoir=to_be_reviewed(my_deck, today)
 
 
 
 ########    MELANGER LES CARTES      #########
-
+random.shuffle(a_revoir)
 
 
 
@@ -60,7 +58,8 @@ for card in my_deck.cards:
 
 ########     MONTRER LA CARTE SUIVANTE     ##########
 
-
+for card in my_deck.cards:
+	if card.review:
 
 
 
