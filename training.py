@@ -1,11 +1,11 @@
 
 ##########   REVIEW SYSTEM   ###########
 # Five bins : 
-#	1- reviewed each day
-#	2- reviewed all 2 days
-#	3- reviewed all 5 days
-#	4- reviewed all 7 days
-#	5- reviewed all 20 days
+#	0- reviewed each day
+#	1- reviewed all 2 days
+#	2- reviewed all 5 days
+#	3- reviewed all 7 days
+#	4- reviewed all 20 days
 ########################################
 
 
