@@ -9,12 +9,11 @@
 ########################################
 
 
+
 ######  USE OF DATETIME   ######
 # D= datetime.datetime.now() alors D= AAAA-MM-DD HH:MM:SS.SSSSSS
 # D.day= DD     D.hour=HH   etc...
 ################################
-
-
 
 
 
@@ -54,28 +53,28 @@ random.shuffle(a_revoir)
 
 
 
+########     ET MAINTENANT REVISONS !    ##########
+while len(a_revoir)!=0:
+	# Montrer la premiere carte  
+	card=a_revoir[0]
+	
+	# Reception de la reponse 
+	answer=raw_input("%s\n" %(card.topside))
 
 
-########     MONTRER LA CARTE SUIVANTE     ##########
-
-for card in my_deck.cards:
-	if card.review:
-
-
-
-
-#######       IF ANSWER CORRECT   ########
-
-
-
-
-
-
-#######       IF ANSWER WRONG     ########
+	###   IF ANSWER CORRECT   ###
+	if answer==
 
 
 
 
+	###    IF ANSWER WRONG     ###
+
+	###  finalisation
+	card.review=false
+	a_revoir.pop(0)
+
+print("Well done !! You have just finished today session !!")
 
 
 ######   SAVING THE DECK  #########
