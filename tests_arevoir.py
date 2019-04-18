@@ -10,7 +10,7 @@ class TestARevoir(unittest.TestCase):
 	card1=Card('card_test1', 'waste', 'bouchon', 'bouchon')
 	card1.position=1
 	card1.review=False
-	card1.date=datetime.date(2019,04,15)
+	card1.date=datetime.date(2018,12,15)
 
 	card2=Card('card_test2', 'waste', 'bouchon', 'bouchon')
 	card2.position=0
@@ -23,11 +23,11 @@ class TestARevoir(unittest.TestCase):
 	card1.date=datetime.date(2019,04,01)
 	
 	my_deck.cards=[card1,card2,card3]
-	today=datetime.date(2019,04,16)
+	today=datetime.date(2019,01,01)
 
 	def test_fonction(self):
 		result=to_be_reviewed(self.my_deck, self.today)
-		self.assertEqual(result, [card2,card3])
+		self.assertEqual(result, [card1])
 
 if __name__ == '__main__':
 	unittest.main()

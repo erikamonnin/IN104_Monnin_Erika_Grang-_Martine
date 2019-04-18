@@ -59,7 +59,7 @@ while len(a_revoir)!=0:
 	card=a_revoir[0]
 	
 	# Reception de la reponse 
-	answer=raw_input("%s\n" %(card.topside))
+	answer=raw_input("%s\n Recyclage ? Compost ? Verre ? Bouchon ? Cendrier ? Electronique ? Piles ? Ordures menageres ?\n" %(card.topside))
 
 
 	###   IF ANSWER CORRECT   ###
