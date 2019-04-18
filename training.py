@@ -83,7 +83,6 @@ print("Well done !! You have just finished today session !!\n")
 
 
 
-
 ######   SAVING THE DECK  #########
 
 my_deck.save_the_deck(filename)
