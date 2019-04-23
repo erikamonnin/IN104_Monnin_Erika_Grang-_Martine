@@ -27,7 +27,7 @@ from class_desk import Deck
 from list_to_be_reviewed import to_be_reviewed
 import datetime
 import random
-
+import time
 
 
 
@@ -59,27 +59,29 @@ while len(a_revoir)!=0:
 	card=a_revoir[0]
 	
 	# Reception de la reponse 
-	answer=raw_input("%s\n Recyclage ? Compost ? Verre ? Bouchon ? Cendrier ? Electronique ? Piles ? Ordures menageres ?\n" %(card.topside))
+	answer=upper(raw_input("%s\n Recyclage ? Compost ? Verre ? Bouchon ? Cendrier ? Electronique ? Piles ? Ordures menageres ?\n" %(card.topside)))
 
 
 	###   IF ANSWER CORRECT   ###
-	if answer==card.backside:
+	if answer==upper(card.backside):
 		print ("Yeah !! Brilliant ! You learn so fast !\n")
 		card.position +=1
-
+		time.sleep(3)
 
 	###    IF ANSWER WRONG     ###
 	else:
 		print ("Owowo... That was not what was expected\n")
-		print ("%s\n" %(card.backside))
+		print ("%s" %(card.backside))
+		print ("was expected\n")
 		card.position = 0
+		time.sleep(3)
 
-	###  finalisation
+	###  finalisation   ###
 	card.date=today
 	card.review=False
 	a_revoir.pop(0)
 
-print("Well done !! You have just finished today session !!\n")
+print("Well done !! You have just finished today's session !!\n")
 
 
 
