@@ -13,3 +13,5 @@ class Card:
 
 		self.date=datetime.datetime.now()  # prochaine date
 
+	def __setitem__(self, key, item): self.__dict__[key] = item
+

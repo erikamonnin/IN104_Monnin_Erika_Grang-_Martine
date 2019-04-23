@@ -36,7 +36,7 @@ class Deck:
 		"""
 		for x in self.cards:
 			if x.identifier==card_id :		
-				x.edited_attribute = change
+				x[edited_attribute] = change
 		return
 
 

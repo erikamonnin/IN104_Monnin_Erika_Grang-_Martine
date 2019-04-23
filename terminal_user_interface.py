@@ -18,7 +18,7 @@ if choix == 'Y':
 
 while flag:
 
-	choice=raw_input('What do you want to do?\n A - add card \n E - edit a card \n D - Delete a card \n S - save the deck \n L - load a deck\n Q - quit \n')
+	choice=raw_input('What do you want to do?\n A - Add a card \n E - Edit a card \n D - Delete a card \n P - Print attributes of a card \n S - Save the deck \n L - Load a deck\n Q - Quit \n')
 	choice=choice.upper()
   
 	if choice == 'A': 
@@ -60,6 +60,21 @@ while flag:
 		id_card=raw_input('Id_card\n')
 		my_deck.delete_card_from_deck(id_card)
 	
+
+	elif choice == 'P':
+		id_card=raw_input('Id_card\n')
+		i=0
+		l=len(my_deck.cards)
+		c=my_deck.cards[i]
+		while id_card!=c.identifier and i<l:
+			c=my_deck.cards[i]
+			i+=1
+		if i==l+1:
+			print("Cette carte n'existe pas...")
+		else:
+			print("Topside : %s \nBackside : %s\nPosition : %s \nReview : %s \nDate of last review : %s\n" %(c.topside, c.backside, c.position, c.review, c.date))
+		time.sleep(1.5)
+
 
 	elif choice == 'L':
 		filename=raw_input('Nom du fichier\n') + '.pickle'
