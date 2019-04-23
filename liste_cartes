@@ -1,5 +1,5 @@
 card_bouteille_eau	Bouteille d'eau 		Recyclage
-card_patate		Pomme de terre			Compost
+card_patate		Epluchure de pomme de terre	Compost
 card_bouteille_vin	Bouteille de Vin		Verre
 card_bouchon		Bouchon de bouteille		Bouchon
 card_epluchure		Epluchures de carottes		Compost
@@ -19,3 +19,12 @@ card_pamplemousse	Peau de pamplemousse		Ordures ménagères
 card_pomme		Trognon de pomme		Compost
 card_lait		Brique de lait			Recyclage
 card_chocolat		Aluminium d'une tablette de chocolat	Recyclage
+card_assiette		Assiette cassée			Ordures ménagères
+card_flageolet		Conserve de flageolets		Recyclage
+card_tomato_concentre	Conserve de concentré de tomate	Recyclage
+card_sauce_tomate	Pot de sauce tomate		Verre
+card_pesto		Pot de pesto			Verre
+card_feuilles		Feuilles mortes			Compost
+card_vinaigre		Bouteille de vinaigre		Verre
+card_biere		Bouteille de Corona		Verre
+card_sachet_pain	Sachet de baguette		Compost
