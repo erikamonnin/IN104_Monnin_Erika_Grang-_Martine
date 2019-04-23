@@ -28,3 +28,17 @@ card_feuilles		Feuilles mortes			Compost
 card_vinaigre		Bouteille de vinaigre		Verre
 card_biere		Bouteille de Corona		Verre
 card_sachet_pain	Sachet de baguette		Compost
+card_four		Vieux four de l'anim		Electronique
+card_neon		Neon				Ampoules
+card_ampoule		Ampoule				Ampoules
+card_jean		Vieux jean			Relais
+card_chaussure		Vieilles chaussures		Relais
+card_bonnet		Vieux bonnet			Relais
+card_chaussette		Chaussettes trouées		Ordures ménagères
+card_collant		Vieux collants filés		Ordures ménagères	
+card_coton		Cotons démaquillants		Ordures ménagères	
+card_shampoing		Bouteille de shampoing		Recyclage
+card_pq			Carton de papier toilette ou sopalin	Compost
+card_mouchoire		Mouchoires en papier		Compost
+card_sopalin		Essuie-tout			Compost
+
