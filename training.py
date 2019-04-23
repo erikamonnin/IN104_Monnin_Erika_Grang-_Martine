@@ -59,11 +59,11 @@ while len(a_revoir)!=0:
 	card=a_revoir[0]
 	
 	# Reception de la reponse 
-	answer=upper(raw_input("%s\n Recyclage ? Compost ? Verre ? Bouchon ? Cendrier ? Electronique ? Piles ? Ordures menageres ?\n" %(card.topside)))
+	answer=raw_input("%s\n Recyclage ? Compost ? Verre ? Bouchon ? Cendrier ? Electronique ? Piles ? Ordures menageres ?\n" %(card.topside)).upper()
 
 
 	###   IF ANSWER CORRECT   ###
-	if answer==upper(card.backside):
+	if answer==card.backside.upper():
 		print ("Yeah !! Brilliant ! You learn so fast !\n")
 		card.position +=1
 		time.sleep(3)
