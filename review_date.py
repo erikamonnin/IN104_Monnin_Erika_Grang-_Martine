@@ -4,10 +4,17 @@
 # position, de calculer la prochaine date de visionnage. 
 #
 ############################################
+import datetime
+from cardclass import Card
 
 
-def review_date(card):
-	former_date=card.date()
+def review_date_funct(card):
+
+	#class WrongInputError(ValueError): pass
+	#if type(card)!=Card:
+	#	raise WrongInputError
+		
+	former_date=card.date
 	
 	def from_position_to_date(position):
 		"""
@@ -21,8 +28,8 @@ def review_date(card):
 			4: datetime.timedelta(days=12),
 			}
 		return(switcher[position])
-	
-	delta=from_position_to_date(card.position())
+
+	delta=from_position_to_date(card.position)
 	
 	new_date=former_date + delta
 	return(new_date)
