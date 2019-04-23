@@ -22,6 +22,11 @@ while flag:
   
 	if choice == 'A': 
 		id_card=raw_input('Id card?\n')
+		for c in my_deck.cards:
+			if c.identifier==id_card:
+				print("Cette carte existe deja!")
+				break
+		
 		topside=raw_input('Top Side?\n')
 		backside=raw_input('Back Side?\n')
 		my_deck.add_card_to_deck(id_card,"Waste",topside,backside)
@@ -33,9 +38,16 @@ while flag:
 	if choice == 'E': 
 		id_card=raw_input('Id card?\n')
 		attribute=raw_input('Edited attribute?\n')
-		change=raw_input('Change?\n')
-		my_deck.edit_card(id_card,attribute,change)
-		print("the card as been succesfully edited!")
+		if attribute=='identifier' or attribute=='subject' or attribute=='topside' or attribute=='backside':
+			change=raw_input('Change?\n')
+			my_deck.edit_card(id_card,attribute,change)
+			print("the card as been succesfully edited!")
+		elif attribute=='review' or attribute=='position':
+			change=input('Change?\n')
+			my_deck.edit_card(id_card,attribute,change)
+			print("the card as been succesfully edited!")
+		else :
+			print("Attention ! Les attributs possibles sont : identifier, subject, topside, backside, review, position")
 		
 
 	if choice == 'D':
