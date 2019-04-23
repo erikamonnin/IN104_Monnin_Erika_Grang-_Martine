@@ -10,7 +10,7 @@ def to_be_reviewed(deck, today):
 	due_cards=[]
 	for card in deck.cards:
 		if not card.review:
-			due_date=review_date(card)
+			due_date=review_date.review_date_funct(card)
 			if today.year>due_date.year:
 				card.review=True
 				due_cards.append(card)
