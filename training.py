@@ -58,7 +58,8 @@ random.shuffle(a_revoir)
 succes = 0
 echecs = 0
 L= 0
-print("\n Courage, seulement %s cartes a reviser aujourd'hui\n" %(len(a_revoir)))
+print("\n       Courage, seulement %s cartes a reviser aujourd'hui  :) \n" %(len(a_revoir)))
+time.sleep(0.5)
 
 while len(a_revoir)!=0:
 	# Montrer la premiere carte  
@@ -73,6 +74,8 @@ while len(a_revoir)!=0:
 	
 	if answer=='Q':
 		my_deck.save_the_deck(filename)
+		print ("Don't forget to come back latter to finish your session ;-)\n")
+		time.sleep(1.5)
 		quit()
 
 	###   IF ANSWER CORRECT   ###
@@ -97,6 +100,7 @@ while len(a_revoir)!=0:
 	ps = int((float(succes)/L)*100)
 	pe = int((float(echecs)/L)*100)
 	print ("Succes : %s %% \nEchecs : %s %%\n \n" %(ps, pe))
+	time.sleep(0.5)
 	print("Deja %s cartes revisees ! \nAllez, plus que %s cartes !\n" %(L,len(a_revoir)))
 	time.sleep(1.5)
 	
