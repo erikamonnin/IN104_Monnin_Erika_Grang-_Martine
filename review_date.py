@@ -5,7 +5,7 @@
 #
 ############################################
 import datetime
-from cardclass import Card
+from card_class import Card
 
 
 def review_date_funct(card):

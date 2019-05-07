@@ -25,7 +25,7 @@
 from card_class import Card
 from deck_class import Deck
 from review_list import to_be_reviewed
-from supprime_accents import del_accents
+
 import datetime
 import random
 import time
@@ -61,11 +61,11 @@ while len(a_revoir)!=0:
 	
 	# Reception de la reponse 
 	print("Vous devez choisir la poubelle adaptee:\n")
-	answer=del_accents(input("%s\n Recyclage ? Compost ? Verre ? Bouchon ? Cendrier ? Electronique ? Piles ? Ordures menageres ? Relais? Ampoules?\n" %(card.topside)).upper())
+	answer=input("%s\n Recyclage ? Compost ? Verre ? Bouchon ? Cendrier ? Electronique ? Piles ? Ordures menageres ? Relais? Ampoules?\n" %(card.topside)).upper()
 
 
 	###   IF ANSWER CORRECT   ###
-	if answer==del_accents(card.backside.upper()):
+	if answer==card.backside.upper():
 		print ("Yeah !! Brilliant ! You learn so fast !\n")
 		card.position +=1
 		time.sleep(3)

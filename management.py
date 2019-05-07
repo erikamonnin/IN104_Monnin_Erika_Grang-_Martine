@@ -1,5 +1,5 @@
-from cardclass import Card
-from class_desk import Deck
+from card_class import Card
+from deck_class import Deck
 import time
 
 my_deck=Deck()

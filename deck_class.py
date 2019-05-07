@@ -1,5 +1,5 @@
 import pickle
-from cardclass import Card
+from card_class import Card
 
 class Deck:
 	def __init__(self,subject="Waste"):
