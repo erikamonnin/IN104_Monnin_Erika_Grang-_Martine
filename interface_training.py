@@ -128,6 +128,8 @@ class Train(tk.Frame):
 
 			cendrier_button = tk.Button(self, text="Cendrier", command=self.cendrier(card.backside))
 			cendrier_button.grid(row=6, column=0)
+			
+			L-=1
 
 		#for item in ["Recyclage", "Compost", "Verre", "Bouchon", "Cendrier", "Electronique", "Piles", "Ordures menageres"]:
 			
