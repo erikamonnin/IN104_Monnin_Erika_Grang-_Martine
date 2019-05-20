@@ -1,16 +1,27 @@
-import Tkinter as tk
-
-fenetre = tk.Tk()
-
-
-listbox = tk.Listbox(fenetre)
-listbox.pack()
-for item in ["Recyclage", "Compost", "Verre", "Bouchon", "Cendrier", "Electronique", "Piles", "Ordures menageres"]:
-	listbox.insert(tk.END, item)
+import tkinter as tk
+from card_class import Card
+from deck_class import Deck
+import time
 
 
-bouton=tk.Button(fenetre, text="Fermer", command=fenetre.quit)
-bouton.pack()
+
+class Window(tk.Frame):
+	
+	def __init__(self, master=None):
+ 		self.var = tk.IntVar()
+		c = tk.Checkbutton(
+			master, text="Enable Tab",
+			variable=self.var,
+			command=self.cb)
+		c.pack()
+
+	def cb(self, event):
+		print "variable is", self.var.get()
 
 
-fenetre.mainloop()
+
+root = tk.Tk()
+root.geometry("400x300")
+
+app = Window(root)
+app.mainloop()
