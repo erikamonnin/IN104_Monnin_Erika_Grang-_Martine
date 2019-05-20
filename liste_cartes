@@ -4,7 +4,7 @@ card_bouteille_vin	Bouteille de Vin		Verre
 card_bouchon		Bouchon de bouteille		Bouchon
 card_epluchure		Epluchures de carottes		Compost
 card_rognures		Rognures d'ongles		Ordures ménagères
-card_viande		Os de poulet			Ordures ménagères
+card_os			Os de poulet			Ordures ménagères
 card_megot		Mégot de cigarette		Cendrier
 card_paquet		Paquet de pâtes vide		Recyclage
 card_piles		Piles usées			Piles
@@ -41,4 +41,57 @@ card_shampoing		Bouteille de shampoing		Recyclage
 card_pq			Carton de papier toilette ou sopalin	Compost
 card_mouchoire		Mouchoires en papier		Compost
 card_sopalin		Essuie-tout			Compost
+card_brique		Brique de jus de fruit		R
+card_pompote		Gourde de compote		R
+card_caprisun		Gourde de Caprisun		R
+card_telephone		Vieux telephone			E
+card_confiture		Pot de confiture vide		V
+card_miel		Pot de miel vide		V
+card_ketchup		Flacon de Ketchup/Mayo/moutarde vide	R
+card_entretien		Flacon de produit d'entretien vide	R
+card_drap		Draps usés			T
+card_dentifrice		Tube de dentifrice 		R
+card_brosse_dents	Brosse à dents usée		R
+card_bouquet		Bouquet fanné			C
+card_nappe		Nappe trouée			T
+card_tshirt		Vieux T-Shirt			T
+card_pull		Vieux pull			T
+card_sandales		Vieilles sandales		T
+card_tongs		Vieilles tongs			T
+card_fromage		Croutes de fromage		O
+card_viande		Mauvais morceaux de viande	O
+card_oeuf		Coquilles d'oeufs		C
+card_peau_melon		Peau de melon ou de pastèque	C
+card_peau_kiwi		Peau de Kiwi			C
+card_couenne		Couenne de jambon		O
+card_queue_legume	Queue d'haricots		C
+card_eponge		Eponge usée			O
+card_serpillere		Serpillère usée			O
+card_stylo		Stylo bic			R
+card_crayon		Crayon de papier		C
+card_gomme		Epluchures de gomme		O
+card_regle		Regle graduée			R
+card_serviette_hygienique	Serviette hygienique	O
+card_tampon		Tampon usagé			O
+card_fruit		Fruit pourri			C
+card_legume		Legume rassi			C
+card_the		Thé et shachet de thé		C
+card_cafe		Marc de café			C
+card_paille		Paille de boisson		R
+card_gobelet		Gobelet de la cafet		R
+card_yaourt		Pot de yaourt en plastique	R
+card_boite_oeuf		Boite d'oeufs			C
+card_cigare		Restant de cigare		M
+card_alumette		Alumette usagée			C
+card_couverts		Couverts en plastique		R
+card_assiette_carton	Assiettes à usage unique	R
+card_creme		Pot de crème en plastique	R
+card_cahier		Cahier				R
+
+
+
+
+
+
+
 
