@@ -9,7 +9,7 @@ def load_a_deck(fenetre):
        	var_texte = tk.StringVar()
        	ligne_texte = tk.Entry(fenetre, textvariable=var_texte)
        	ligne_texte.pack()
-	my_deck.load_the_deck(ligne_texte.pickle)
+	my_deck.load_the_deck(var_texte.pickle)
        	return
         		
 
