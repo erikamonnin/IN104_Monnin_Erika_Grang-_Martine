@@ -44,23 +44,18 @@ class StartPage(tk.Frame):
 		label = tk.Label(self, text="What do you want to do ?", font=controller.title_font)
 		label.pack(side="top", fill="x", pady=10)
 
-		button1 = tk.Button(self, text="Add a card",
-                            command=lambda: controller.show_frame("AddCard"))
-		button2 = tk.Button(self, text="Edit a card",
-                            command=lambda: controller.show_frame("EditCard"))
-		button3 = tk.Button(self, text="Delete a card",
-                            command=lambda: controller.show_frame("DeleteCard"))
-		button4 = tk.Button(self, text="Print a card",
-                            command=lambda: controller.show_frame("PrintCard"))
-		button5 = tk.Button(self, text="Quit",
-                            command=self.quit)
+		button1 = tk.Button(self, text="Add a card", command=lambda: controller.show_frame("AddCard"))
+		button2 = tk.Button(self, text="Edit a card", command=lambda: controller.show_frame("EditCard"))
+		button3 = tk.Button(self, text="Delete a card", command=lambda: controller.show_frame("DeleteCard"))
+		button4 = tk.Button(self, text="Print a card", command=lambda: controller.show_frame("PrintCard"))
+		button5 = tk.Button(self, text="Quit", command=self.quit)
 		button1.pack()
 		button2.pack()
 		button3.pack()
 		button4.pack()
 		button5.pack()
 
-	
+
 	def quit(self):
 		exit()
 
@@ -72,8 +67,7 @@ class AddCard(tk.Frame):
 		self.controller = controller
 		label = tk.Label(self, text="Add a card", font=controller.title_font)
 		label.pack(side="top", fill="x", pady=10)
-		button = tk.Button(self, text="Go to the start page",
-                           command=lambda: controller.show_frame("StartPage"))
+		button = tk.Button(self, text="Go to the start page", command=lambda: controller.show_frame("StartPage"))
 		button.pack()
 
 
@@ -84,8 +78,7 @@ class EditCard(tk.Frame):
 		self.controller = controller
 		label = tk.Label(self, text="Edit a card", font=controller.title_font)
 		label.pack(side="top", fill="x", pady=10)
-		button = tk.Button(self, text="Go to the start page",
-                           command=lambda: controller.show_frame("StartPage"))
+		button = tk.Button(self, text="Go to the start page", command=lambda: controller.show_frame("StartPage"))
 		button.pack()
 
 class DeleteCard(tk.Frame):
@@ -94,9 +87,8 @@ class DeleteCard(tk.Frame):
 		tk.Frame.__init__(self, parent)
 		self.controller = controller
 		label = tk.Label(self, text="Delete a card", font=controller.title_font)
- 		label.pack(side="top", fill="x", pady=10)
-		button = tk.Button(self, text="Go to the start page",
-                           command=lambda: controller.show_frame("StartPage"))
+		label.pack(side="top", fill="x", pady=10)
+		button = tk.Button(self, text="Go to the start page", command=lambda: controller.show_frame("StartPage"))
 		button.pack()
 
 class PrintCard(tk.Frame):
@@ -106,12 +98,11 @@ class PrintCard(tk.Frame):
 		self.controller = controller
 		label = tk.Label(self, text="Print a card", font=controller.title_font)
 		label.pack(side="top", fill="x", pady=10)
-		button = tk.Button(self, text="Go to the start page",
-                           command=lambda: controller.show_frame("StartPage"))
+		button = tk.Button(self, text="Go to the start page", command=lambda: controller.show_frame("StartPage"))
 		button.pack()
 
 
 if __name__ == "__main__":
-    app = SampleApp()
-    app.mainloop()
+	app = SampleApp()
+	app.mainloop()
 
