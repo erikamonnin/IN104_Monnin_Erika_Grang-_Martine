@@ -1,6 +1,11 @@
 import tkinter as tk
 import tkFont as tkfont
+from tkinter.messagebox import * 
+from card_class import Card
+from deck_class import Deck
+import time
 
+my_deck=Deck()
 
 class SampleApp(tk.Tk):
 
@@ -72,12 +77,37 @@ class AddCard(tk.Frame):
 	identifier = tk.StringVar()
 	topside = tk.StringVar()
 	backside = tk.StringVar()
+	
+	label1 = tk.Label(self, text= "Identifier")
 	entry1 = tk.Entry(self, textvariable=identifier)
+	label2 = tk.Label(self, text="Topside")
 	entry2 = tk.Entry(self, textvariable=topside)
+	label3 = tk.Label(self, text="Backside")
 	entry3 = tk.Entry(self, textvariable=backside)
+	
+	label1.pack()
 	entry1.pack()
+	label2.pack()
 	entry2.pack()
+	label3.pack()
 	entry3.pack()
+	
+	button2 = tk.Button(self, text = "Add", command = lambda : self.add_card(identifier.get(),topside.get(),backside.get()))
+	button2.pack()
+	
+    def add_card(self,identifier,topside,backside):
+    	existence=False
+    	
+    	for c in my_deck.cards:
+		if c.identifier==identifier:
+			showinfo("Info!","This card already exists!")
+			existence=True
+	if existence==False:
+		if identifier== '' or topside == '' or backside == '':
+			showinfo("Info!","All arguments need to be completed")
+    		else:
+    			my_deck.add_card_to_deck(identifier,"Waste",topside,backside)
+			showinfo("Info!","You have" + str(len(my_deck.cards)) + " cards")
 	
 class EditCard(tk.Frame):
 
@@ -88,7 +118,54 @@ class EditCard(tk.Frame):
         label.pack(side="top", fill="x", pady=10)
         button = tk.Button(self, text="Go to the start page", command=lambda: controller.show_frame("StartPage"))
         button.pack()
-
+        
+        identifier = tk.StringVar()
+	edited_attribute = tk.StringVar()
+	change = tk.StringVar()
+	
+	label1 = tk.Label(self, text= "Identifier")
+	entry1 = tk.Entry(self, textvariable=identifier)
+	label2 = tk.Label(self, text="Edited attribute (to choose between: identifier - subject - topside - backside - review - position)")
+	entry2 = tk.Entry(self, textvariable=edited_attribute)
+	label3 = tk.Label(self, text="Change")
+	entry3 = tk.Entry(self, textvariable=change)
+	
+	label1.pack()
+	entry1.pack()
+	label2.pack()
+	entry2.pack()
+	label3.pack()
+	entry3.pack()
+	
+	button2 = tk.Button(self, text = "Edit", command = lambda : self.editing_card(identifier.get(),edited_attribute.get(),change.get()))
+	button2.pack()
+	
+    def editing_card(self,identifier,attribute,change):
+    	existence=False
+    	
+    	if my_deck.cards==[]:
+    		existence=True
+    		showinfo("Info","Empty deck: you should add cards first!")
+    	
+	for c in my_deck.cards:
+		if c.identifier==identifier:
+			existence=False
+		else:
+			showinfo("Info!","This card does not exist!")
+			existence=True
+			
+	if existence==False:	
+		if identifier== '' or attribute == '' or change == '':
+			showinfo("Info!","All arguments need to be completed")	
+		elif attribute=='identifier' or attribute=='topside' or attribute=='backside' or attribute=='subject' or attribute=='review' or attribute=='position':
+			my_deck.edit_card(identifier,attribute,change)
+			showinfo("Info!","The card has been succesfully edited!")
+		else: 
+			showinfo("Info!","This attribute does not exist!")
+	
+	
+	
+	
 class DeleteCard(tk.Frame):
 	
     def __init__(self, parent, controller):
@@ -99,6 +176,36 @@ class DeleteCard(tk.Frame):
     	button = tk.Button(self, text="Go to the start page", command=lambda: controller.show_frame("StartPage"))
     	button.pack()
     	
+    	identifier = tk.StringVar()
+    	label1 = tk.Label(self, text= "Identifier")
+	entry1 = tk.Entry(self, textvariable=identifier)
+	label1.pack()
+	entry1.pack()
+	button2 = tk.Button(self, text = "Delete", command = lambda : self.deleting_card(identifier.get()))
+	button2.pack()
+	
+    def deleting_card(self,identifier):
+    	existence=False
+    	
+    	if my_deck.cards==[]:
+    		existence=True
+    		showinfo("Info","Empty deck: you should add cards first!")
+    	
+	for c in my_deck.cards:
+		if c.identifier==identifier:
+			existence=False
+		else:
+			showinfo("Info!","This card does not exist or you haven't choose a card")
+			existence=True
+			
+	if existence == False:
+    		my_deck.delete_card_from_deck(identifier)
+    		showinfo("Info!","The card has been deleted, you now have" + str(len(my_deck.cards)) + " cards")
+	
+	
+	
+	
+	
 class PrintCard(tk.Frame):
 	
     def __init__(self, parent, controller):

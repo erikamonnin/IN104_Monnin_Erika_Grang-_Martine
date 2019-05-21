@@ -49,7 +49,7 @@ while flag:
 		elif attribute=='review' or attribute=='position':
 			change=input('Change?\n')
 			my_deck.edit_card(id_card,attribute,change)
-			print("the card as been succesfully edited!\n")
+			print("the card has been succesfully edited!\n")
 
 		else :
 			print("Attention ! Les attributs possibles sont : identifier, subject, topside, backside, review, position\n")
