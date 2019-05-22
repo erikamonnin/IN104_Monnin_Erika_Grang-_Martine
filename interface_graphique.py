@@ -85,14 +85,8 @@ class StartPage(tk.Frame):
 	my_deck.load_the_deck(filename)
 	showinfo("Info","it contains" + str(len(my_deck.cards)))
 	#self.controller.show_frame("StartPage")
-
-	today=datetime.datetime.now()
-        a_revoir=to_be_reviewed(my_deck, today)
-	label = tk.Label(self, text="%s" %(len(my_deck.cards)))
-        label.pack(side="top", fill="x", pady=10)
-        random.shuffle(a_revoir)
         
-    	button = tk.Button(self, text="Go to the start page", command=lambda: self.controller.show_frame("Accueil"), bg='#8ABC00')
+    	button = tk.Button(self, text="Start session", command=lambda: self.controller.show_frame("Accueil"), bg='#8ABC00')
     	button.pack()
 
 
@@ -107,6 +101,14 @@ class Accueil(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         self.controller = controller
+        
+        label = tk.Label(self, text="The deck contains %s cards" %(len(my_deck.cards)), font=controller.title_font)
+        label.pack(side="top", fill="x", pady=10)
+        
+        today=datetime.datetime.now()
+        a_revoir=to_be_reviewed(my_deck, today)
+        random.shuffle(a_revoir)
+        
         
         if len(a_revoir)==0:
             label = tk.Label(self, text="Today session is over ! Congratulations !!", font=controller.title_font)

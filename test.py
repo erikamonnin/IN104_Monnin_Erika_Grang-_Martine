@@ -340,7 +340,7 @@ class LoadDeck(tk.Frame):
     def load_deck(self,deckname):
     	filename=deckname + '.pickle'
 	my_deck.load_the_deck(filename)
-	showinfo("Info!", "your deck has been correctly loaded, it contains " + str(len(my_deck.cards)) + " card")
+	showinfo("Info!", "your deck has been correctly loaded, it contains " + str(len(my_deck.cards)) + " cards")
 	
 	
 	

@@ -11,7 +11,7 @@ import time
 import datetime
 import random
 
-
+my_deck=Deck()
 
 
 class SampleApp(tk.Tk):
@@ -78,7 +78,7 @@ class LoadDeck(tk.Frame):
     def load_deck(self,deckname):
     	filename=deckname + '.pickle'
 	my_deck.load_the_deck(filename)
-	showinfo("Info!", "your deck has been correctly loaded, it contains " + str(len(my_deck.cards)) + " card")
+	showinfo("Info!", "your deck has been correctly loaded, it contains " + str(len(my_deck.cards)) + " cards")
 
 
 
@@ -96,9 +96,9 @@ class StartPage(tk.Frame):
         tk.Frame.__init__(self, parent)
         self.controller = controller
         
-        global my_deck
-        my_deck=Deck()
-        my_deck.load_the_deck('first_deck.pickle')
+        #global my_deck
+        #my_deck=Deck()
+        #my_deck.load_the_deck('first_deck.pickle')
         today=datetime.datetime.now()
         global a_revoir
         a_revoir=to_be_reviewed(my_deck, today)
@@ -132,38 +132,39 @@ class Train(tk.Frame):
         global attributs
         self.clean(attributs)
         attributs = []
-
-        card = a_revoir[0]
+	
+	if len(a_revoir)!=0:
+        	card = a_revoir[0]
      
-        label = tk.Label(self, text="What is the bin adapted for this waste : %s ?" %(card.topside), font=self.controller.title_font)
-        label.pack()
+        	label = tk.Label(self, text="What is the bin adapted for this waste : %s ?" %(card.topside), font=self.controller.title_font)
+        	label.pack()
 
-        button_recy = tk.Button(self, text="Recyclage", command = lambda : self.answer('R', card))
-        button_comp = tk.Button(self, text="Compost", command = lambda : self.answer('C', card))
-        button_verre = tk.Button(self, text="Verre", command = lambda : self.answer('V', card))
-        button_bou = tk.Button(self, text="Bouchon", command = lambda : self.answer('B', card))
-        button_cen = tk.Button(self, text="Cendrier", command = lambda : self.answer('M', card))
-        button_elec = tk.Button(self, text="Electronique", command = lambda : self.answer('E', card))
-        button_piles = tk.Button(self, text="Piles", command = lambda : self.answer('P', card))
-        button_relais = tk.Button(self, text="Relais", command = lambda : self.answer('T', card))
-        button_amp = tk.Button(self, text="Ampoules", command = lambda : self.answer('A', card))
-        button_ordmen = tk.Button(self, text="Ordures menageres", command = lambda : self.answer('O', card))
-        button_quit = tk.Button(self, text="Quit", command=self.quit)
+       		button_recy = tk.Button(self, text="Recyclage", command = lambda : self.answer('R', card))
+       		button_comp = tk.Button(self, text="Compost", command = lambda : self.answer('C', card))
+        	button_verre = tk.Button(self, text="Verre", command = lambda : self.answer('V', card))
+        	button_bou = tk.Button(self, text="Bouchon", command = lambda : self.answer('B', card))
+        	button_cen = tk.Button(self, text="Cendrier", command = lambda : self.answer('M', card))
+        	button_elec = tk.Button(self, text="Electronique", command = lambda : self.answer('E', card))
+        	button_piles = tk.Button(self, text="Piles", command = lambda : self.answer('P', card))
+        	button_relais = tk.Button(self, text="Relais", command = lambda : self.answer('T', card))
+        	button_amp = tk.Button(self, text="Ampoules", command = lambda : self.answer('A', card))
+        	button_ordmen = tk.Button(self, text="Ordures menageres", command = lambda : self.answer('O', card))	
+        	button_quit = tk.Button(self, text="Quit", command=self.quit)
 
 
-        attributs = [label, button_recy, button_quit, button_comp, button_verre, button_bou, button_cen, button_elec, button_piles, button_relais, button_amp, button_ordmen]
+        	attributs = [label, button_recy, button_quit, button_comp, button_verre, button_bou, button_cen, button_elec, button_piles, button_relais, button_amp, button_ordmen]
 
-        button_recy.pack()
-        button_comp.pack()
-        button_verre.pack()
-        button_bou.pack()
-        button_cen.pack()
-        button_elec.pack()
-        button_piles.pack()
-        button_relais.pack()
-        button_amp.pack()
-        button_ordmen.pack()
-        button_quit.pack()
+        	button_recy.pack()
+        	button_comp.pack()
+        	button_verre.pack()
+        	button_bou.pack()
+        	button_cen.pack()
+        	button_elec.pack()
+        	button_piles.pack()
+        	button_relais.pack()
+        	button_amp.pack()
+        	button_ordmen.pack()
+        	button_quit.pack()
 
 
     
