@@ -2084,35 +2084,5 @@ sg14
 S'card_cahier'
 p593
 sg16
-<<<<<<< HEAD
 g275
-=======
-g272
-sba(icard_class
-Card
-p591
-(dp592
-g3
-S'test'
-p593
-sg5
-S'test'
-p594
-sg7
-I01
-sg8
-g9
-(S"\x07\xe3\x05\x16\t'\x17\x04\xd8."
-p595
-tp596
-Rp597
-sg13
-I0
-sg14
-S'card_test'
-p598
-sg16
-S'Waste'
-p599
->>>>>>> 959130b8ac8accc8f7beec59acfc0f4eb6785d12
 sba.

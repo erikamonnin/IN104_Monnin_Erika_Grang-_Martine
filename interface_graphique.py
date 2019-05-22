@@ -56,7 +56,7 @@ class StartPage(tk.Frame):
         
         global my_deck
         my_deck=Deck()
-        my_deck.load_the_deck('first_deck.pickle')
+        my_deck.load_the_deck('second_deck.pickle')
         today=datetime.datetime.now()
         global a_revoir
         a_revoir=to_be_reviewed(my_deck, today)
@@ -143,7 +143,7 @@ class Train(tk.Frame):
         if len(a_revoir)!=0:
             self.train()
         else :
-            my_deck.save_the_deck('first_deck.pickle') 
+            my_deck.save_the_deck('second_deck.pickle') 
             self.controller.show_frame("PageTwo")
 
 
@@ -159,7 +159,7 @@ class Train(tk.Frame):
 
 
     def quit(self):
-        my_deck.save_the_deck('first_deck.pickle')
+        my_deck.save_the_deck('second_deck.pickle')
         showinfo("Info", "Don't forget to come back to finish the session !")
         exit()
 
