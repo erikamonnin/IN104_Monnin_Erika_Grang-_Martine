@@ -85,6 +85,9 @@ class StartPage(tk.Frame):
     def quit(self):
     	exit()
     	
+    	
+    	
+    	
 
 
 ### CREATION OF THE OTHER WINDOWS: ###
@@ -143,6 +146,11 @@ class AddCard(tk.Frame):
     		else:
     			my_deck.add_card_to_deck(identifier,"Waste",topside,backside)
 			showinfo("Info!","Your card has been correctly added, now you have " + str(len(my_deck.cards)) + " cards in the deck")
+			
+			
+			
+			
+			
 	
 class EditCard(tk.Frame):
 
@@ -204,6 +212,13 @@ class EditCard(tk.Frame):
 	
 	
 	
+	
+	
+	
+	
+	
+	
+	
 class DeleteCard(tk.Frame):
 	
     def __init__(self, parent, controller):
@@ -241,6 +256,13 @@ class DeleteCard(tk.Frame):
     		showinfo("Info!","The card has been deleted, you now have " + str(len(my_deck.cards)) + " cards")
     	else:
     		showinfo("Info!","This card does not exist or you haven't choose a card")
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
@@ -287,6 +309,14 @@ class PrintCard(tk.Frame):
 		showinfo("Here is your card","id: " + identifier + "\ntopside: " + my_card.topside + "\nbackside: " + my_card.backside)
 	else:
 		showinfo("Info!","This card does not exist or you haven't choose a card")
+		
+		
+		
+		
+		
+		
+		
+		
 				
 class LoadDeck(tk.Frame):
 	
@@ -312,6 +342,15 @@ class LoadDeck(tk.Frame):
 	my_deck.load_the_deck(filename)
 	showinfo("Info!", "your deck has been correctly loaded, it contains " + str(len(my_deck.cards)) + " card")
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 class SaveDeck(tk.Frame):
 	
     def __init__(self, parent, controller):
@@ -332,9 +371,12 @@ class SaveDeck(tk.Frame):
 	button2.pack()
 	
     def save_deck(self,deckname):
-    	filename=deckname + '.pickle'
-	my_deck.save_the_deck(filename)
-	showinfo("Info!","your deck has been correctly saved")
+    	if deckname == '':
+    		showinfo("Info!","You need to choose a deck!")
+    	else:
+    		filename=deckname + '.pickle'
+		my_deck.save_the_deck(filename)
+		showinfo("Info!","your deck has been correctly saved")
 	
 
 if __name__ == "__main__":
