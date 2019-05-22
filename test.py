@@ -112,11 +112,11 @@ class AddCard(tk.Frame):
 	topside = tk.StringVar()
 	backside = tk.StringVar()
 	
-	label1 = tk.Label(self, text= "Identifier")
+	label1 = tk.Label(self, text= "Identifier", bg='#D2F081')
 	entry1 = tk.Entry(self, textvariable=identifier)
-	label2 = tk.Label(self, text="Topside")
+	label2 = tk.Label(self, text="Topside", bg='#D2F081')
 	entry2 = tk.Entry(self, textvariable=topside)
-	label3 = tk.Label(self, text="Backside")
+	label3 = tk.Label(self, text="Backside", bg='#D2F081')
 	entry3 = tk.Entry(self, textvariable=backside)
 	
 	label1.pack()
@@ -150,7 +150,7 @@ class EditCard(tk.Frame):
         tk.Frame.__init__(self, parent)
         self.controller = controller
         self.config(bg='#D2F081')
-        label = tk.Label(self, text="Edit a card", font=controller.title_font)
+        label = tk.Label(self, text="Edit a card", font=controller.title_font, bg='#D2F081')
         label.pack(side="top", fill="x", pady=10)
         button = tk.Button(self, text="Go to the start page", command=lambda: controller.show_frame("StartPage"),bg='#8ABC00')
         button.pack()
@@ -159,11 +159,11 @@ class EditCard(tk.Frame):
 	edited_attribute = tk.StringVar()
 	change = tk.StringVar()
 	
-	label1 = tk.Label(self, text= "Identifier")
+	label1 = tk.Label(self, text= "Identifier", bg='#D2F081')
 	entry1 = tk.Entry(self, textvariable=identifier)
-	label2 = tk.Label(self, text="Edited attribute (to choose between: identifier - subject - topside - backside)")
+	label2 = tk.Label(self, text="Edited attribute (to choose between: identifier - subject - topside - backside)", bg='#D2F081')
 	entry2 = tk.Entry(self, textvariable=edited_attribute)
-	label3 = tk.Label(self, text="Change")
+	label3 = tk.Label(self, text="Change", bg='#D2F081')
 	entry3 = tk.Entry(self, textvariable=change)
 	
 	label1.pack()
@@ -210,13 +210,13 @@ class DeleteCard(tk.Frame):
     	tk.Frame.__init__(self,parent)
     	self.controller = controller
     	self.config(bg='#D2F081')
-    	label = tk.Label(self, text="Delete a card", font=controller.title_font)
+    	label = tk.Label(self, text="Delete a card", font=controller.title_font, bg='#D2F081')
     	label.pack(side="top", fill="x", pady=10)
     	button = tk.Button(self, text="Go to the start page", command=lambda: controller.show_frame("StartPage"),bg='#8ABC00')
     	button.pack()
     	
     	identifier = tk.StringVar()
-    	label1 = tk.Label(self, text= "Identifier")
+    	label1 = tk.Label(self, text= "Identifier", bg='#D2F081')
 	entry1 = tk.Entry(self, textvariable=identifier)
 	label1.pack()
 	entry1.pack()
@@ -252,13 +252,13 @@ class PrintCard(tk.Frame):
     	tk.Frame.__init__(self,parent)
     	self.controller = controller
     	self.config(bg='#D2F081')
-    	label = tk.Label(self, text="Print a card", font=controller.title_font)
+    	label = tk.Label(self, text="Print a card", font=controller.title_font, bg='#D2F081')
     	label.pack(side="top", fill="x", pady=10)
     	button = tk.Button(self, text="Go to the start page", command=lambda: controller.show_frame("StartPage"),bg='#8ABC00')
     	button.pack()
     	
     	identifier = tk.StringVar()
-    	label1 = tk.Label(self, text= "Identifier")
+    	label1 = tk.Label(self, text= "Identifier", bg='#D2F081')
 	entry1 = tk.Entry(self, textvariable=identifier)
 	label1.pack()
 	entry1.pack()
@@ -294,13 +294,13 @@ class LoadDeck(tk.Frame):
     	tk.Frame.__init__(self,parent)
     	self.controller = controller
     	self.config(bg='#D2F081')
-    	label = tk.Label(self, text="Load a deck", font=controller.title_font)
+    	label = tk.Label(self, text="Load a deck", font=controller.title_font, bg='#D2F081')
     	label.pack(side="top", fill="x", pady=10)
     	button = tk.Button(self, text="Go to the start page", command=lambda: controller.show_frame("StartPage"), bg='#8ABC00')
     	button.pack()
 		
     	deckname = tk.StringVar()
-    	label1 = tk.Label(self, text= "Name of the deck")
+    	label1 = tk.Label(self, text= "Name of the deck", bg='#D2F081')
 	entry1 = tk.Entry(self, textvariable=deckname)
 	label1.pack()
 	entry1.pack()
@@ -318,13 +318,13 @@ class SaveDeck(tk.Frame):
     	tk.Frame.__init__(self,parent)
     	self.controller = controller
     	self.config(bg='#D2F081')
-    	label = tk.Label(self, text="Save a deck", font=controller.title_font)
+    	label = tk.Label(self, text="Save a deck", font=controller.title_font, bg='#D2F081')
     	label.pack(side="top", fill="x", pady=10)
     	button = tk.Button(self, text="Go to the start page", command=lambda: controller.show_frame("StartPage"), bg='#8ABC00')
     	button.pack()
 		
     	deckname = tk.StringVar()
-    	label1 = tk.Label(self, text= "Name of the deck")
+    	label1 = tk.Label(self, text= "Name of the deck",bg='#D2F081')
 	entry1 = tk.Entry(self, textvariable=deckname)
 	label1.pack()
 	entry1.pack()
