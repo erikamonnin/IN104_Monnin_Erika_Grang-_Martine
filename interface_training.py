@@ -30,7 +30,7 @@ class SampleApp(tk.Tk):
         container.grid_columnconfigure(0, weight=1)
 
         self.frames = {}
-        for F in (StartPage, PageOne, PageTwo, Train):
+        for F in (StartPage, PageOne, PageTwo, Train, LoadDeck):
             page_name = F.__name__
             frame = F(parent=container, controller=self)
             self.frames[page_name] = frame
@@ -40,12 +40,54 @@ class SampleApp(tk.Tk):
             # will be the one that is visible.
             frame.grid(row=0, column=0, sticky="nsew")
 
-        self.show_frame("StartPage")
+        self.show_frame("LoadDeck")
 
     def show_frame(self, page_name):
         '''Show a frame for the given page name'''
         frame = self.frames[page_name]
         frame.tkraise()
+
+
+
+
+
+
+
+
+
+
+class LoadDeck(tk.Frame):
+	
+    def __init__(self, parent, controller):
+    	tk.Frame.__init__(self,parent)
+    	self.controller = controller
+    	self.config(bg='#D2F081')
+    	label = tk.Label(self, text="On which deck do you want to train ?", font=controller.title_font, bg='#D2F081')
+    	label.pack(side="top", fill="x", pady=10)
+    	button = tk.Button(self, text="Go to the start page", command=lambda: controller.show_frame("StartPage"), bg='#8ABC00')
+    	button.pack()
+		
+    	deckname = tk.StringVar()
+    	label1 = tk.Label(self, text= "Name of the deck", bg='#D2F081')
+	entry1 = tk.Entry(self, textvariable=deckname)
+	label1.pack()
+	entry1.pack()
+	button2 = tk.Button(self, text = "Load", command = lambda : self.load_deck(deckname.get()), bg='#B2ED11')
+	button2.pack()
+	
+    def load_deck(self,deckname):
+    	filename=deckname + '.pickle'
+	my_deck.load_the_deck(filename)
+	showinfo("Info!", "your deck has been correctly loaded, it contains " + str(len(my_deck.cards)) + " card")
+
+
+
+
+
+
+
+
+
 
 
 class StartPage(tk.Frame):
@@ -56,7 +98,7 @@ class StartPage(tk.Frame):
         
         global my_deck
         my_deck=Deck()
-        my_deck.load_the_deck('waste.pickle')
+        my_deck.load_the_deck('first_deck.pickle')
         today=datetime.datetime.now()
         global a_revoir
         a_revoir=to_be_reviewed(my_deck, today)
@@ -98,13 +140,29 @@ class Train(tk.Frame):
 
         button_recy = tk.Button(self, text="Recyclage", command = lambda : self.answer('R', card))
         button_comp = tk.Button(self, text="Compost", command = lambda : self.answer('C', card))
+        button_verre = tk.Button(self, text="Verre", command = lambda : self.answer('V', card))
+        button_bou = tk.Button(self, text="Bouchon", command = lambda : self.answer('B', card))
+        button_cen = tk.Button(self, text="Cendrier", command = lambda : self.answer('M', card))
+        button_elec = tk.Button(self, text="Electronique", command = lambda : self.answer('E', card))
+        button_piles = tk.Button(self, text="Piles", command = lambda : self.answer('P', card))
+        button_relais = tk.Button(self, text="Relais", command = lambda : self.answer('T', card))
+        button_amp = tk.Button(self, text="Ampoules", command = lambda : self.answer('A', card))
+        button_ordmen = tk.Button(self, text="Ordures menageres", command = lambda : self.answer('O', card))
         button_quit = tk.Button(self, text="Quit", command=self.quit)
 
 
-        attributs = [label, button_recy, button_quit, button_comp]
+        attributs = [label, button_recy, button_quit, button_comp, button_verre, button_bou, button_cen, button_elec, button_piles, button_relais, button_amp, button_ordmen]
 
         button_recy.pack()
         button_comp.pack()
+        button_verre.pack()
+        button_bou.pack()
+        button_cen.pack()
+        button_elec.pack()
+        button_piles.pack()
+        button_relais.pack()
+        button_amp.pack()
+        button_ordmen.pack()
         button_quit.pack()
 
 
@@ -112,16 +170,19 @@ class Train(tk.Frame):
 
     def answer(self, ans, card):
         if ans==card.backside:
-            showinfo("Info", "Congratulation")
-            ##card.position +=1
+            showinfo("Info", "Brilliant ! You learn so fast !")
+            card.position +=1
         else :
-            showinfo("Info", "Owowow")
-            #card.position = 0
+            showinfo("Info", "Owowow... %s was expected" %(card.backside))
+            card.position = 0
 
+        card.date=datetime.datetime.now()
+        card.review=False
         a_revoir.pop(0)
         if len(a_revoir)!=0:
             self.train()
         else : 
+            my_deck.save_the_deck('first_deck.pickle') 
             self.controller.show_frame("PageTwo")
 
 
@@ -137,6 +198,8 @@ class Train(tk.Frame):
 
 
     def quit(self):
+        my_deck.save_the_deck('first_deck.pickle')
+        showinfo("Info", "Don't forget to come back to finish the session !")
         exit()
 
 
@@ -176,63 +239,6 @@ if __name__ == "__main__":
 
 
 
-
-
-
-#class Train(tk.Frame):
-#
-#def __init__(self, parent, controller):
-#tk.Frame.__init__(self, parent)
-#self.controller = controller
-#self.answer=tk.StringVar()
-#
-#
-#while len(a_revoir)>0:
-#card=a_revoir[0]
-#label = tk.Label(self, text="Quelle est la poubelle adaptee a ce dechet : %s ?" %(card.topside))
-#label.pack(side="top", fill="x", pady=10)
-#		
-#recyclage_button = tk.Button(self, text="R- Recyclage", command=self.recyclage(card.backside))
-#recyclage_button.pack()
-#		
-#compost_button = tk.Button(self, text="C- Compost", command=self.compost(card.backside))
-#compost_button.pack()
-#
-#verre_button = tk.Button(self, text="V- Verre", command=self.verre(card.backside))
-#verre_button.pack()
-#
-#bouchon_button = tk.Button(self, text="B- Bouchon", command=self.bouchon(card.backside))
-#bouchon_button.pack()
-#
-#cendrier_button = tk.Button(self, text="M- Cendrier", command=self.cendrier(card.backside))
-#cendrier_button.pack()
-#
-#electronic_button = tk.Button(self, text="E- Electronique", command=self.electronic(card.backside))
-#electronic_button.pack()
-#			
-#piles_button = tk.Button(self, text="P- Piles", command=self.piles(card.backside))
-#piles_button.pack()
-#
-#ordures_button = tk.Button(self, text="O- Ordures menageres", command=self.ordures(card.backside))
-#ordures_button.pack()
-#
-#quit_button = tk.Button(self, text="Quit", command=self.quit)
-#quit_button.pack()
-#
-#
-#			
-#a_revoir.pop()
-			
-#for item in ["Recyclage", "Compost", "Verre", "Bouchon", "Cendrier", "Electronique", "Piles", "Ordures menageres"]:
-			
-#def recyclage(self, backside):
-#self.answer.set()
-#if backside=='R':
-#label = tk.Label(self, text="Yeah !! Brilliant ! You learn so fast !")
-#label.pack()
-#else :
-#label = tk.Label(self, text="Owowo... That was not what was expected... %s was expected" %(backside))
-#label.pack()
 
 # To include images we need to use PIL (Python Image Library)
 # from PIL import Image, ImageTk

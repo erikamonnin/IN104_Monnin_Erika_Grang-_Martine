@@ -1,3 +1,4 @@
+
 from card_class import Card
 from deck_class import Deck
 from review_list import to_be_reviewed
@@ -11,6 +12,8 @@ import datetime
 import random
 
 
+my_deck=Deck()
+a_revoir=[]
 
 
 class SampleApp(tk.Tk):
@@ -29,7 +32,7 @@ class SampleApp(tk.Tk):
         container.grid_columnconfigure(0, weight=1)
 
         self.frames = {}
-        for F in (StartPage, PageOne, PageTwo, Train):
+        for F in (StartPage, Accueil, Train, PageOne, PageTwo):
             page_name = F.__name__
             frame = F(parent=container, controller=self)
             self.frames[page_name] = frame
@@ -47,35 +50,86 @@ class SampleApp(tk.Tk):
         frame.tkraise()
 
 
+
+
+
+
+
+
+
+
 class StartPage(tk.Frame):
+	
+    def __init__(self, parent, controller):
+    	tk.Frame.__init__(self,parent)
+    	self.controller = controller
+    	self.config(bg='#D2F081')
+
+
+    	label = tk.Label(self, text="On which deck do you want to train ?", font=controller.title_font, bg='#D2F081')
+    	label.pack(side="top", fill="x", pady=10)
+
+		
+    	deckname = tk.StringVar()
+    	label1 = tk.Label(self, text= "Name of the deck", bg='#D2F081')
+	entry1 = tk.Entry(self, textvariable=deckname)
+	label1.pack()
+	entry1.pack()
+	button2 = tk.Button(self, text = "Load", command = lambda : self.load_deck(deckname.get()), bg='#B2ED11')
+	button2.pack()
+	
+
+
+    def load_deck(self,deckname):
+    	filename=deckname + '.pickle'
+	my_deck.load_the_deck(filename)
+	showinfo("Info","it contains" + str(len(my_deck.cards)))
+	#self.controller.show_frame("StartPage")
+
+	today=datetime.datetime.now()
+        a_revoir=to_be_reviewed(my_deck, today)
+	label = tk.Label(self, text="%s" %(len(my_deck.cards)))
+        label.pack(side="top", fill="x", pady=10)
+        random.shuffle(a_revoir)
+        
+    	button = tk.Button(self, text="Go to the start page", command=lambda: self.controller.show_frame("Accueil"), bg='#8ABC00')
+    	button.pack()
+
+
+
+
+
+
+
+
+class Accueil(tk.Frame):
 
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         self.controller = controller
         
-        
-        global my_deck
-        my_deck=Deck()
-        my_deck.load_the_deck('second_deck.pickle')
-        today=datetime.datetime.now()
-        global a_revoir
-        a_revoir=to_be_reviewed(my_deck, today)
-        random.shuffle(a_revoir)
+        if len(a_revoir)==0:
+            label = tk.Label(self, text="Today session is over ! Congratulations !!", font=controller.title_font)
+            label.pack(side="top", fill="x", pady=10)
+            
 
-        #if len(a_revoir)==0:
+        else :
+            label = tk.Label(self, text="Start today session ? Only %s cards to review" %(len(a_revoir)), font=controller.title_font)
+            label.pack(side="top", fill="x", pady=10)
 
-
-        label = tk.Label(self, text="Start today session ? Only %s cards to review" %(len(a_revoir)), font=controller.title_font)
-        label.pack(side="top", fill="x", pady=10)
-
-        button_start = tk.Button(self, text="Start",
+            button_start = tk.Button(self, text="Start",
                             command= lambda: controller.show_frame("Train"))
-        button_quit = tk.Button(self, text="Quit",
+            button_quit = tk.Button(self, text="Quit",
                             command= self.quit)
-        #attributs=[label, button_start, button_quit]
-        button_start.pack()
-        button_quit.pack()
         
+            button_start.pack()
+            button_quit.pack()
+        
+
+
+
+
+
 
 
 class Train(tk.Frame):
@@ -89,47 +143,49 @@ class Train(tk.Frame):
 
 
     def train(self):
+
         global attributs
         self.clean(attributs)
         attributs = []
-
-
-        card = a_revoir[0]
+        
+	if my_deck.cards!=[]:
+            card = a_revoir[0]
      
-        label = tk.Label(self, text="What is the bin adapted for this waste : %s ?" %(card.topside), font=self.controller.title_font)
-        label.pack()
+            label = tk.Label(self, text="What is the bin adapted for this waste : %s ?" %(card.topside), font=self.controller.title_font)
+            label.pack()
 
-        button_recy = tk.Button(self, text="Recyclage", command = lambda : self.answer('R', card))
-        button_comp = tk.Button(self, text="Compost", command = lambda : self.answer('C', card))
-        button_verre = tk.Button(self, text="Verre", command = lambda : self.answer('V', card))
-        button_bou = tk.Button(self, text="Bouchon", command = lambda : self.answer('B', card))
-        button_cen = tk.Button(self, text="Cendrier", command = lambda : self.answer('M', card))
-        button_elec = tk.Button(self, text="Electronique", command = lambda : self.answer('E', card))
-        button_piles = tk.Button(self, text="Piles", command = lambda : self.answer('P', card))
-        button_relais = tk.Button(self, text="Relais", command = lambda : self.answer('T', card))
-        button_amp = tk.Button(self, text="Ampoules", command = lambda : self.answer('A', card))
-        button_ordmen = tk.Button(self, text="Ordures menageres", command = lambda : self.answer('O', card))
-        button_quit = tk.Button(self, text="Quit", command=self.quit)
+            button_recy = tk.Button(self, text="Recyclage", command = lambda : self.answer('R', card))
+            button_comp = tk.Button(self, text="Compost", command = lambda : self.answer('C', card))
+            button_verre = tk.Button(self, text="Verre", command = lambda : self.answer('V', card))
+            button_bou = tk.Button(self, text="Bouchon", command = lambda : self.answer('B', card))
+            button_cen = tk.Button(self, text="Cendrier", command = lambda : self.answer('M', card))
+            button_elec = tk.Button(self, text="Electronique", command = lambda : self.answer('E', card))
+            button_piles = tk.Button(self, text="Piles", command = lambda : self.answer('P', card))
+            button_relais = tk.Button(self, text="Relais", command = lambda : self.answer('T', card))
+            button_amp = tk.Button(self, text="Ampoules", command = lambda : self.answer('A', card))
+            button_ordmen = tk.Button(self, text="Ordures menageres", command = lambda : self.answer('O', card))
+            button_quit = tk.Button(self, text="Quit", command=self.quit)
 
 
-        attributs = [label, button_recy, button_quit, button_comp, button_verre, button_bou, button_cen, button_elec, button_piles, button_relais, button_amp, button_ordmen]
+            attributs = [label, button_recy, button_quit, button_comp, button_verre, button_bou, button_cen, button_elec, button_piles, button_relais, button_amp, button_ordmen]
 
-        button_recy.pack()
-        button_comp.pack()
-        button_verre.pack()
-        button_bou.pack()
-        button_cen.pack()
-        button_elec.pack()
-        button_piles.pack()
-        button_relais.pack()
-        button_amp.pack()
-        button_ordmen.pack()
-        button_quit.pack()
+            button_recy.pack()
+            button_comp.pack()
+            button_verre.pack()
+            button_bou.pack()
+            button_cen.pack()
+            button_elec.pack()
+            button_piles.pack()
+            button_relais.pack()
+            button_amp.pack()
+            button_ordmen.pack()
+            button_quit.pack()
 
 
     
 
     def answer(self, ans, card):
+        global a_revoir
         if ans==card.backside:
             showinfo("Info", "Brilliant ! You learn so fast !")
             card.position +=1
@@ -142,8 +198,8 @@ class Train(tk.Frame):
         a_revoir.pop(0)
         if len(a_revoir)!=0:
             self.train()
-        else :
-            my_deck.save_the_deck('second_deck.pickle') 
+        else : 
+            my_deck.save_the_deck('first_deck.pickle') 
             self.controller.show_frame("PageTwo")
 
 
@@ -159,7 +215,7 @@ class Train(tk.Frame):
 
 
     def quit(self):
-        my_deck.save_the_deck('second_deck.pickle')
+        my_deck.save_the_deck('first_deck.pickle')
         showinfo("Info", "Don't forget to come back to finish the session !")
         exit()
 
@@ -195,5 +251,6 @@ class PageTwo(tk.Frame):
 if __name__ == "__main__":
     app = SampleApp()
     app.mainloop()
+
 
 
