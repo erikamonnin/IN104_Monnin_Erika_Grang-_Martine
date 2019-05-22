@@ -5,6 +5,8 @@ from review_list import to_be_reviewed
 
 import tkinter as tk
 import tkFont as tkfont
+from tkinter.messagebox import *
+
 import time
 import datetime
 import random
@@ -28,7 +30,7 @@ class SampleApp(tk.Tk):
         container.grid_columnconfigure(0, weight=1)
 
         self.frames = {}
-        for F in (StartPage, PageOne, PageTwo):
+        for F in (StartPage, PageOne, PageTwo, Train):
             page_name = F.__name__
             frame = F(parent=container, controller=self)
             self.frames[page_name] = frame
@@ -52,10 +54,9 @@ class StartPage(tk.Frame):
         tk.Frame.__init__(self, parent)
         self.controller = controller
         
-        global attributs
         global my_deck
         my_deck=Deck()
-        my_deck.load_the_deck('first_deck.pickle')
+        my_deck.load_the_deck('waste.pickle')
         today=datetime.datetime.now()
         global a_revoir
         a_revoir=to_be_reviewed(my_deck, today)
@@ -65,33 +66,82 @@ class StartPage(tk.Frame):
         label.pack(side="top", fill="x", pady=10)
 
         button_start = tk.Button(self, text="Start",
-                            command=self.train)
+                            command= lambda: controller.show_frame("Train"))
         button_quit = tk.Button(self, text="Quit",
-                            command=self.quit)
-        attributs=[label, button_start, button_quit]
+                            command= self.quit)
+        
         button_start.pack()
         button_quit.pack()
         
 
+
+class Train(tk.Frame):
+
+    def __init__(self, parent, controller):
+        tk.Frame.__init__(self, parent)
+        self.controller = controller
+        global attributs
+        attributs = []
+        self.train()
+
+
     def train(self):
-        while len(a_revoir)>0:
-            card=a_revoir[0]
-            self.clean(attributs)
-            self.train_one_card(card)
-            
-            a_revoir.pop()
+
+        global attributs
+        self.clean(attributs)
+        attributs = []
+
+        card = a_revoir[0]
+     
+        label = tk.Label(self, text="What is the bin adapted for this waste : %s ?" %(card.topside), font=self.controller.title_font)
+        label.pack()
+
+        button_recy = tk.Button(self, text="Recyclage", command = lambda : self.answer('R', card))
+        button_comp = tk.Button(self, text="Compost", command = lambda : self.answer('C', card))
+        button_quit = tk.Button(self, text="Quit", command=self.quit)
+
+
+        attributs = [label, button_recy, button_quit, button_comp]
+
+        button_recy.pack()
+        button_comp.pack()
+        button_quit.pack()
+
+
+    
+
+    def answer(self, ans, card):
+        if ans==card.backside:
+            showinfo("Info", "Congratulation")
+            ##card.position +=1
+        else :
+            showinfo("Info", "Owowow")
+            #card.position = 0
+
+        a_revoir.pop(0)
+        if len(a_revoir)!=0:
+            self.train()
+        else : 
+            self.controller.show_frame("PageTwo")
+
+
+
+
+    def clean(self, attributs):
+        for i in attributs :
+            i.destroy()
+        
+
+
+
+
 
     def quit(self):
         exit()
 
-    def train_one_card(card):
-        label = tk.Label(self, text="This is page 1", font=controller.title_font)
-        label.pack(side="top", fill="x", pady=10)
 
-    def clean(attributs):
-        for i in attributs:
-            i.destroy()
-        
+
+
 
 
 class PageOne(tk.Frame):
@@ -111,7 +161,7 @@ class PageTwo(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         self.controller = controller
-        label = tk.Label(self, text="This is page 2", font=controller.title_font)
+        label = tk.Label(self, text="Today session is over ! Congratulations !!", font=controller.title_font)
         label.pack(side="top", fill="x", pady=10)
         button = tk.Button(self, text="Go to the start page",
                            command=lambda: controller.show_frame("StartPage"))
