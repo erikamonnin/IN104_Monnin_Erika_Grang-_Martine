@@ -11,9 +11,6 @@ import time
 import datetime
 import random
 
-my_deck=Deck()
-
-
 class SampleApp(tk.Tk):
 
     def __init__(self, *args, **kwargs):
@@ -30,7 +27,7 @@ class SampleApp(tk.Tk):
         container.grid_columnconfigure(0, weight=1)
 
         self.frames = {}
-        for F in (StartPage, PageOne, PageTwo, Train, LoadDeck):
+        for F in (StartPage, PageTwo, Train):
             page_name = F.__name__
             frame = F(parent=container, controller=self)
             self.frames[page_name] = frame
@@ -40,7 +37,7 @@ class SampleApp(tk.Tk):
             # will be the one that is visible.
             frame.grid(row=0, column=0, sticky="nsew")
 
-        self.show_frame("LoadDeck")
+        self.show_frame("StartPage")
 
     def show_frame(self, page_name):
         '''Show a frame for the given page name'''
@@ -55,66 +52,36 @@ class SampleApp(tk.Tk):
 
 
 
-
-class LoadDeck(tk.Frame):
-	
-    def __init__(self, parent, controller):
-    	tk.Frame.__init__(self,parent)
-    	self.controller = controller
-    	self.config(bg='#D2F081')
-    	label = tk.Label(self, text="On which deck do you want to train ?", font=controller.title_font, bg='#D2F081')
-    	label.pack(side="top", fill="x", pady=10)
-    	button = tk.Button(self, text="Go to the start page", command=lambda: controller.show_frame("StartPage"), bg='#8ABC00')
-    	button.pack()
-		
-    	deckname = tk.StringVar()
-    	label1 = tk.Label(self, text= "Name of the deck", bg='#D2F081')
-	entry1 = tk.Entry(self, textvariable=deckname)
-	label1.pack()
-	entry1.pack()
-	button2 = tk.Button(self, text = "Load", command = lambda : self.load_deck(deckname.get()), bg='#B2ED11')
-	button2.pack()
-	
-    def load_deck(self,deckname):
-    	filename=deckname + '.pickle'
-	my_deck.load_the_deck(filename)
-	showinfo("Info!", "your deck has been correctly loaded, it contains " + str(len(my_deck.cards)) + " cards")
-
-
-
-
-
-
-
-
-
-
-
 class StartPage(tk.Frame):
 
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         self.controller = controller
-        
-        #global my_deck
-        #my_deck=Deck()
-        #my_deck.load_the_deck('first_deck.pickle')
+        self.config(bg='#D2F081') 
+
+        global my_deck
+        my_deck=Deck()
+        my_deck.load_the_deck('first_deck.pickle')
         today=datetime.datetime.now()
         global a_revoir
         a_revoir=to_be_reviewed(my_deck, today)
         random.shuffle(a_revoir)
 
-        label = tk.Label(self, text="Start today session ? Only %s cards to review" %(len(a_revoir)), font=controller.title_font)
+        label = tk.Label(self, text="Start today session ? Only %s cards to review" %(len(a_revoir)), font=controller.title_font, bg='#D2F081')
         label.pack(side="top", fill="x", pady=10)
 
         button_start = tk.Button(self, text="Start",
                             command= lambda: controller.show_frame("Train"))
         button_quit = tk.Button(self, text="Quit",
-                            command= self.quit)
+                            command= self.quit, bg='#8ABC00')
         
         button_start.pack()
         button_quit.pack()
         
+
+
+
+
 
 
 class Train(tk.Frame):
@@ -122,7 +89,14 @@ class Train(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         self.controller = controller
+        self.config(bg='#D2F081') 
+        global succes
+        global echecs
+        global L
         global attributs
+        succes = 0
+        echecs = 0
+        L = 0
         attributs = []
         self.train()
 
@@ -130,13 +104,15 @@ class Train(tk.Frame):
     def train(self):
 
         global attributs
+        global succes, echecs, L
         self.clean(attributs)
         attributs = []
 	
 	if len(a_revoir)!=0:
         	card = a_revoir[0]
+                L +=1
      
-        	label = tk.Label(self, text="What is the bin adapted for this waste : %s ?" %(card.topside), font=self.controller.title_font)
+        	label = tk.Label(self, text="What is the bin adapted for this waste : %s ?" %(card.topside), font=self.controller.title_font, bg='#D2F081')
         	label.pack()
 
        		button_recy = tk.Button(self, text="Recyclage", command = lambda : self.answer('R', card))
@@ -149,7 +125,7 @@ class Train(tk.Frame):
         	button_relais = tk.Button(self, text="Relais", command = lambda : self.answer('T', card))
         	button_amp = tk.Button(self, text="Ampoules", command = lambda : self.answer('A', card))
         	button_ordmen = tk.Button(self, text="Ordures menageres", command = lambda : self.answer('O', card))	
-        	button_quit = tk.Button(self, text="Quit", command=self.quit)
+        	button_quit = tk.Button(self, text="Quit", command=self.quit, bg='#8ABC00')
 
 
         	attributs = [label, button_recy, button_quit, button_comp, button_verre, button_bou, button_cen, button_elec, button_piles, button_relais, button_amp, button_ordmen]
@@ -170,11 +146,19 @@ class Train(tk.Frame):
     
 
     def answer(self, ans, card):
+        global succes, echecs, L
+
         if ans==card.backside:
-            showinfo("Info", "Brilliant ! You learn so fast !")
+            succes = succes +1
+	    ps = int((float(succes)/L)*100)
+	    pe = int((float(echecs)/L)*100)
+            showinfo("Info", "Brilliant ! You learn so fast ! \n %s %% of good answers and only %s %% of wrong ones" %(ps, pe))
             card.position +=1
         else :
-            showinfo("Info", "Owowow... %s was expected" %(card.backside))
+            echecs = echecs +1
+	    ps = int((float(succes)/L)*100)
+	    pe = int((float(echecs)/L)*100)
+            showinfo("Info", "Owowow... %s was expected \n %s %% of good answers and only %s %% of wrong ones" %(card.backside, ps, pe))
             card.position = 0
 
         card.date=datetime.datetime.now()
@@ -205,18 +189,6 @@ class Train(tk.Frame):
 
 
 
-
-
-
-class PageOne(tk.Frame):
-
-    def __init__(self, parent, controller):
-        tk.Frame.__init__(self, parent)
-        self.controller = controller
-        
-        
-        
-        
         
 
 
@@ -240,15 +212,3 @@ if __name__ == "__main__":
 
 
 
-
-# To include images we need to use PIL (Python Image Library)
-# from PIL import Image, ImageTk
-
-
-
-"""Method to display an image."""
-#	img = Image.open('flowers.jpg')
-#	render = ImageTk.PhotoImage(img)
-#	imag = tk.Label(self.master, image=render)
-#	imag.image = render
-#	imag.grid(row=3, column=0, columnspan=2)

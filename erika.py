@@ -62,13 +62,13 @@ class StartPage(tk.Frame):
 	entry1 = tk.Entry(self, textvariable=deckname)
 	label1.pack()
 	entry1.pack()
-	button2 = tk.Button(self, text = "Load", command = lambda : self.load_deck(deckname.get()), bg='#B2ED11')
+	button2 = tk.Button(self, text = "Load", command = lambda : self.load_deck(deckname.get(), my_deck), bg='#B2ED11')
 	button2.pack()
 	
-    def load_deck(self,deckname):
+    def load_deck(self,deckname, deck):
     	filename=deckname + '.pickle'
-	my_deck.load_the_deck(filename)
-	showinfo("Info!", "your deck has been correctly loaded, it contains " + str(len(my_deck.cards)) + " cards")
+	deck.load_the_deck(filename)
+	showinfo("Info!", "your deck has been correctly loaded, it contains " + str(len(deck.cards)) + " cards")
 	
 	
 	
