@@ -1,6 +1,6 @@
 # IN104_Monnin_Erika_Grang-_Martine
 
-The complete deck is saved in :  
+The complete deck is saved in :
 first_deck.pickle
 
 
