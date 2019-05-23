@@ -74,7 +74,7 @@ sg5
 S'V'
 p31
 sg7
-I00
+I01
 sg8
 g9
 (S'\x07\xe3\x05\x16\x11)-\x08dq'
@@ -371,7 +371,7 @@ sg5
 S'O'
 p113
 sg7
-I00
+I01
 sg8
 g9
 (S'\x07\xe3\x05\x16\x11\x1c;\r~\x8b'
@@ -444,7 +444,7 @@ sg5
 S'C'
 p135
 sg7
-I00
+I01
 sg8
 g9
 (S'\x07\xe3\x05\x16\x11-8\x03\xa2)'
@@ -682,7 +682,7 @@ p204
 sg5
 g176
 sg7
-I00
+I01
 sg8
 g9
 (S'\x07\xe3\x05\x16\x11/ \t\x9b\xc9'
@@ -864,10 +864,10 @@ sg5
 S'Ordures m\xc3\xa9nag\xc3\xa8res'
 p254
 sg7
-I01
+I00
 sg8
 g9
-(S'\x07\xe3\x04\x17\x10\x074\x08\x05\x13'
+(S'\x07\xe3\x05\x17\x15\x0b$\x0f\x1d\x84'
 p255
 tp256
 Rp257
@@ -999,7 +999,7 @@ p290
 sg5
 g279
 sg7
-I00
+I01
 sg8
 g9
 (S'\x07\xe3\x05\x16\x11\x1c0\x06\xaf\x0b'
@@ -1048,15 +1048,15 @@ p305
 sg5
 g274
 sg7
-I01
+I00
 sg8
 g9
-(S'\x07\xe3\x05\x14\x11+\n\x0c\xed\x10'
+(S'\x07\xe3\x05\x17\x15\x0b:\x07po'
 p306
 tp307
 Rp308
 sg13
-I0
+I1
 sg14
 S'card_pompote'
 p309
@@ -1072,7 +1072,7 @@ p312
 sg5
 g274
 sg7
-I00
+I01
 sg8
 g9
 (S'\x07\xe3\x05\x16\x113\x00\x06N\xcf'
@@ -1097,7 +1097,7 @@ sg5
 S'E'
 p320
 sg7
-I00
+I01
 sg8
 g123
 sg13
@@ -1214,15 +1214,15 @@ p353
 sg5
 g237
 sg7
-I01
+I00
 sg8
 g9
-(S'\x07\xe3\x05\x14\x11-,\n\xbd\xf1'
+(S'\x07\xe3\x05\x17\x15\x0b\x1f\x06\x14$'
 p354
 tp355
 Rp356
 sg13
-I0
+I1
 sg14
 S'card_drap'
 p357
@@ -1334,7 +1334,7 @@ p388
 sg5
 g237
 sg7
-I00
+I01
 sg8
 g9
 (S'\x07\xe3\x05\x16\n#\x00\x06\xfb}'
@@ -1618,7 +1618,7 @@ p469
 sg5
 g262
 sg7
-I00
+I01
 sg8
 g9
 (S'\x07\xe3\x05\x16\x112/\x08F\x9c'
@@ -1714,7 +1714,7 @@ p497
 sg5
 g274
 sg7
-I00
+I01
 sg8
 g9
 (S'\x07\xe3\x05\x16\x0f\x14\x1f\x0c\x06\x1a'
@@ -1762,7 +1762,7 @@ p511
 sg5
 g262
 sg7
-I00
+I01
 sg8
 g9
 (S"\x07\xe3\x05\x16\x11\x00'\n\xb5\x98"
@@ -1854,15 +1854,15 @@ p536
 sg5
 g279
 sg7
-I01
+I00
 sg8
 g9
-(S'\x07\xe3\x05\x14\x115.\x08\x12&'
+(S'\x07\xe3\x05\x17\x15\x0b5\x00\x80\xbf'
 p537
 tp538
 Rp539
 sg13
-I0
+I1
 sg14
 S'card_cafe'
 p540
@@ -1950,7 +1950,7 @@ p564
 sg5
 g279
 sg7
-I00
+I01
 sg8
 g9
 (S'\x07\xe3\x05\x16\x11.\x00\t\xdc\x98'

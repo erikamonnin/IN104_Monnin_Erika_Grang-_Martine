@@ -81,20 +81,7 @@ class StartPage(tk.Frame):
 	button2.pack()
 	
 	
-        today=datetime.datetime.now()
-        a_revoir=to_be_reviewed(my_deck, today)
-        random.shuffle(a_revoir)
 
-        label = tk.Label(self, text="Start today session ? Only %s cards to review" %(len(a_revoir)), font=self.controller.title_font)
-        label.pack(side="top", fill="x", pady=10)
-
-        button_start = tk.Button(self, text="Start",
-                            command= lambda: self.controller.show_frame("Train"))
-        button_quit = tk.Button(self, text="Quit",
-                            command= self.quit)
-        
-        button_start.pack()
-        button_quit.pack()
         
 
 
@@ -117,7 +104,20 @@ class StartPage(tk.Frame):
         attrib = []
 
         '''calcul de la liste a reviser'''
+        today=datetime.datetime.now()
+        a_revoir=to_be_reviewed(my_deck, today)
+        random.shuffle(a_revoir)
 
+        label = tk.Label(self, text="Start today session ? Only %s cards to review" %(len(a_revoir)), font=self.controller.title_font)
+        label.pack(side="top", fill="x", pady=10)
+
+        button_start = tk.Button(self, text="Start",
+                            command= lambda: self.controller.show_frame("Train"))
+        button_quit = tk.Button(self, text="Quit",
+                            command= self.quit)
+        
+        button_start.pack()
+        button_quit.pack()
 
 
     def clean(self, attributs):
